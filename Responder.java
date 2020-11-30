@@ -136,6 +136,8 @@ public class Responder
     /**
      * Build up a list of default responses from which we can pick
      * if we don't know what else to say.
+     * 
+     * This satisfies Lab 12, #1.
      */
     private void fillDefaultResponses()
     {
