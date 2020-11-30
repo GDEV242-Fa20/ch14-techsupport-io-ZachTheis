@@ -64,9 +64,27 @@ public class Responder
     /**
      * Enter all the known keywords and their associated responses
      * into our response map.
+     * 
+     * @throws IOException If there is a problem opening the response file for any reason.
      */
     private void fillResponseMap()
+       // throws IOException
     {
+        Path path = Paths.get("Response Map.txt");
+        Charset charset = Charset.forName("US-ASCII");
+        try(BufferedReader reader = Files.newBufferedReader(path, charset))
+        {
+            
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("The response file was not found");
+        }
+        catch(IOException e)
+        {
+            System.out.println("There was a problem opening the response file.");
+        }
+        
         responseMap.put("crash", 
                         "Well, it never crashes on our system. It must have something\n" +
                         "to do with your system. Tell me more about your configuration.");
@@ -124,10 +142,20 @@ public class Responder
         Charset charset = Charset.forName("US-ASCII");
         Path path = Paths.get(FILE_OF_DEFAULT_RESPONSES);
         try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
-            String response = reader.readLine();
-            while(response != null) {
-                defaultResponses.add(response);
-                response = reader.readLine();
+            String line = reader.readLine();
+            String response = "";
+            while(line != null) 
+            {
+                if(line.trim().equals(""))
+                {
+                    defaultResponses.add(response);
+                    response = "";
+                }
+                else
+                {
+                    response += (line + " ");
+                }
+                line = reader.readLine();
             }
         }
         catch(FileNotFoundException e) {

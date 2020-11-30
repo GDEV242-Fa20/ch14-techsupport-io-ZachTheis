@@ -1,10 +1,16 @@
 #BlueJ class context
-comment0.target=SupportSystem()
-comment0.text=\nCreates\ a\ technical\ support\ system.\n\n
-comment1.target=void\ start()
-comment1.text=\nStart\ the\ technical\ support\ system.\ This\ will\ print\ a\ welcome\ message\ and\ enter\ninto\ a\ dialog\ with\ the\ user,\ until\ the\ user\ ends\ the\ dialog.\n\n
-comment2.target=void\ printWelcome()
-comment2.text=\nPrint\ a\ welcome\ message\ to\ the\ screen.\n\n
-comment3.target=void\ printGoodbye()
-comment3.text=\nPrint\ a\ good-bye\ message\ to\ the\ screen.\n\n
-numComments=4
+comment0.target=SupportSystem
+comment0.text=\r\n\ This\ class\ implements\ a\ technical\ support\ system.\r\n\ It\ is\ the\ top\ level\ class\ in\ this\ project.\r\n\ The\ support\ system\ communicates\ via\ text\ input/output\r\n\ in\ the\ text\ terminal.\r\n\ \r\n\ This\ class\ uses\ an\ object\ of\ class\ InputReader\ to\ read\ input\r\n\ from\ the\ user,\ and\ an\ object\ of\ class\ Responder\ to\ generate\ responses.\r\n\ It\ contains\ a\ loop\ that\ repeatedly\ reads\ input\ and\ generates\r\n\ output\ until\ the\ users\ wants\ to\ leave.\r\n\ \r\n\ @author\ Zach\ Theis\r\n\ @version\ 2020.11.30\r\n
+comment1.params=
+comment1.target=SupportSystem()
+comment1.text=\r\n\ Creates\ a\ technical\ support\ system.\r\n
+comment2.params=
+comment2.target=void\ start()
+comment2.text=\r\n\ Start\ the\ technical\ support\ system.\ This\ will\ print\ a\ welcome\ message\ and\ enter\r\n\ into\ a\ dialog\ with\ the\ user,\ until\ the\ user\ ends\ the\ dialog.\r\n
+comment3.params=
+comment3.target=void\ printWelcome()
+comment3.text=\r\n\ Print\ a\ welcome\ message\ to\ the\ screen.\r\n
+comment4.params=
+comment4.target=void\ printGoodbye()
+comment4.text=\r\n\ Print\ a\ good-bye\ message\ to\ the\ screen.\r\n
+numComments=5
