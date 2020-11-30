@@ -1,0 +1,8 @@
+crash
+Well, it never crashes on our system. It must have something
+to do with your system. Tell me more about your configuration.
+
+slow
+I think this has to do with your hardware. Upgrading your processor
+should solve all performance problems. Have you got a problem with
+our software?
