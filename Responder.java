@@ -39,38 +39,66 @@ public class Responder
         randomGenerator = new Random();
     }
     
+    /**
+     * Catches a key with no paired response value.
+     */
     private class NoMatchingResponseException extends Exception
     {
         private String key;
         
+        /**
+         * Store the detail in error.
+         * @param key The key with no matching response.
+         */
         public NoMatchingResponseException(String key)
         {
             this.key = key;
         }
+        
+        /**
+         * @return The key with no paired response.
+         */
         public String getKey()
         {
             return key;
         }
+        
+        /**
+         * @return A diagnostic statement containing the unpaired key.
+         */
         public String toString()
         {
             return "No response has been paired with " + key;
         }
     }
     
+    /**
+     * Catches a null key.
+     */
     private class NullKeyException extends Exception
     {
         private String response;
         
+        /**
+         * Store the details in error.
+         * @param response The response paired to a null key.
+         */
         public NullKeyException(String response)
         {
             this.response = response;
         }
         
+        /**
+         * @return The unpaired response.
+         */
         public String getResponse()
         {
             return response;
         }
         
+        /**
+         * @return A diagnostic statement containing the unpaired response.
+         */
         public String toString()
         {
             return "There was no key paired with the response: " + response;
@@ -104,7 +132,9 @@ public class Responder
      * Enter all the known keywords and their associated responses
      * into our response map.
      * 
-     * @throws IOException If there is a problem opening the response file for any reason.
+     * This satisfies Lab 12 #2.
+     * @throws NullKeyException If a null key is entered.
+     * @throws NoMatchingResponseException If a key is paired with a null or empty response.
      */
     private void fillResponseMap()
     {
@@ -166,53 +196,6 @@ public class Responder
         {
             System.out.println("There was a problem opening the response file.");
         }
-        
-        // responseMap.put("crash", 
-                        // "Well, it never crashes on our system. It must have something\n" +
-                        // "to do with your system. Tell me more about your configuration.");
-        // responseMap.put("crashes", 
-                        // "Well, it never crashes on our system. It must have something\n" +
-                        // "to do with your system. Tell me more about your configuration.");
-        // responseMap.put("slow", 
-                        // "I think this has to do with your hardware. Upgrading your processor\n" +
-                        // "should solve all performance problems. Have you got a problem with\n" +
-                        // "our software?");
-        // responseMap.put("performance", 
-                        // "Performance was quite adequate in all our tests. Are you running\n" +
-                        // "any other processes in the background?");
-        // responseMap.put("bug", 
-                        // "Well, you know, all software has some bugs. But our software engineers\n" +
-                        // "are working very hard to fix them. Can you describe the problem a bit\n" +
-                        // "further?");
-        // responseMap.put("buggy", 
-                        // "Well, you know, all software has some bugs. But our software engineers\n" +
-                        // "are working very hard to fix them. Can you describe the problem a bit\n" +
-                        // "further?");
-        // responseMap.put("windows", 
-                        // "This is a known bug to do with the Windows operating system. Please\n" +
-                        // "report it to Microsoft. There is nothing we can do about this.");
-        // responseMap.put("macintosh", 
-                        // "This is a known bug to do with the Mac operating system. Please\n" +
-                        // "report it to Apple. There is nothing we can do about this.");
-        // responseMap.put("expensive", 
-                        // "The cost of our product is quite competitive. Have you looked around\n" +
-                        // "and really compared our features?");
-        // responseMap.put("installation", 
-                        // "The installation is really quite straight forward. We have tons of\n" +
-                        // "wizards that do all the work for you. Have you read the installation\n" +
-                        // "instructions?");
-        // responseMap.put("memory", 
-                        // "If you read the system requirements carefully, you will see that the\n" +
-                        // "specified memory requirements are 1.5 giga byte. You really should\n" +
-                        // "upgrade your memory. Anything else you want to know?");
-        // responseMap.put("linux", 
-                        // "We take Linux support very seriously. But there are some problems.\n" +
-                        // "Most have to do with incompatible glibc versions. Can you be a bit\n" +
-                        // "more precise?");
-        // responseMap.put("bluej", 
-                        // "Ahhh, BlueJ, yes. We tried to buy out those guys long ago, but\n" +
-                        // "they simply won't sell... Stubborn people they are. Nothing we can\n" +
-                        // "do about it, I'm afraid.");
     }
 
     /**
