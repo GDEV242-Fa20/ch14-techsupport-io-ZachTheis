@@ -38,6 +38,45 @@ public class Responder
         fillDefaultResponses();
         randomGenerator = new Random();
     }
+    
+    private class NoMatchingResponseException extends Exception
+    {
+        private String key;
+        
+        public NoMatchingResponseException(String key)
+        {
+            this.key = key;
+        }
+        public String getKey()
+        {
+            return key;
+        }
+        public String toString()
+        {
+            return "No response has been paired with " + key;
+        }
+    }
+    
+    private class NullKeyException extends Exception
+    {
+        private String response;
+        
+        public NullKeyException(String response)
+        {
+            this.response = response;
+        }
+        
+        public String getResponse()
+        {
+            return response;
+        }
+        
+        public String toString()
+        {
+            return "There was no key paired with the response: " + response;
+        }
+    }
+        
 
     /**
      * Generate a response from a given set of input words.
@@ -68,7 +107,6 @@ public class Responder
      * @throws IOException If there is a problem opening the response file for any reason.
      */
     private void fillResponseMap()
-       // throws IOException
     {
         Path path = Paths.get("Response Map.txt");
         Charset charset = Charset.forName("US-ASCII");
@@ -82,12 +120,24 @@ public class Responder
             {
                 if(keys.size() == 0)
                 {
-                    keys.add(line); //this will need to be amended for multi-keys responses
+                    String[]inputLine = line.split(", ");
+                    for(String key : inputLine)
+                    {
+                        keys.add(key);
+                    }
                 }
                 else if(line.trim().equals(""))
                 {
                     for(String key : keys)
                     {
+                        if(key == null)
+                        {
+                            throw new NullKeyException(key);
+                        }
+                        else if(response == null || response.equals(""))
+                        {
+                            throw new NoMatchingResponseException(response);
+                        }
                         responseMap.put(key, response);
                     }
                     keys.clear();
@@ -103,6 +153,14 @@ public class Responder
         catch(FileNotFoundException e)
         {
             System.out.println("The response file was not found");
+        }
+        catch(NoMatchingResponseException e)
+        {
+            System.out.println(e);
+        }
+        catch(NullKeyException e)
+        {
+            System.out.println(e);
         }
         catch(IOException e)
         {

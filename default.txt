@@ -11,6 +11,8 @@ Have you checked that you do not have a dll conflict?
 
 That is explained in the manual. Have you read the manual?
 
+
+
 Your description is a bit wishy-washy. 
 Have you got an expert there with you who could describe this more precisely?
 
